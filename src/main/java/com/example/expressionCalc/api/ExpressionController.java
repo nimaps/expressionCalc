@@ -16,13 +16,12 @@ public class ExpressionController {
         this.expressionservice = expressionservice;
     }
 
-    @GetMapping(path="/infixtopostfix/{infix}")
-    public String infixToPostfix(@PathVariable("infix") String expressionString){
-        System.out.println(expressionString);
+    @GetMapping(path="/infixtopostfix")
+    public String infixToPostfix(@RequestParam(name="infix") String expressionString){
         return expressionservice.infixToPostfix(expressionString);
     }
-    @GetMapping(path="/evaluate/{postfix}")
-    public int postfixEvaluate(@PathVariable("postfix") String expressionString){
+    @GetMapping(path="/evaluate")
+    public int postfixEvaluate(@RequestParam(name="postfix") String expressionString){
         return expressionservice.postfixEvaluate(expressionString);
     }
 }
